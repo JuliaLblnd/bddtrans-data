@@ -1,0 +1,20 @@
+body {
+	padding-top: 15px;
+}
+@media screen and (max-width: 767px) {
+	.table-responsive {
+		border: none;
+	}
+	table.footable-details {
+		white-space: initial;
+	}
+}
+
+table.footable-details > tbody > tr > td:nth-child(2) {
+	word-break: break-word;
+}
+
+.footer {
+	padding-top: 19px;
+	border-top: 1px solid #e5e5e5;
+}

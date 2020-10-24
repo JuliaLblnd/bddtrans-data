@@ -1,0 +1,3 @@
+[submodule "bddtrans-parser"]
+	path = bddtrans-parser
+	url = https://github.com/JuliaLblnd/bddtrans-parser.git
