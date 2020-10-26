@@ -29,11 +29,11 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Downloads <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Fichiers <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="bddtrans.csv">Download CSV</a></li>
+								<li><a href="bddtrans.json">Télécharger en JSON</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="bddtrans.json">Download JSON</a></li>
+								<li><a href="bddtrans.csv">Télécharger en CSV</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -41,15 +41,38 @@
 			</div>
 		</nav>
 
+		<div id="alert_box" class="alert alert-danger" role="alert">Erreur de chargement. <br>Votre navigateur ne supporte pas JavaScript !</div>
 		<div id="filter-form-container"></div>
 	</div>
+
 
 	<div class="container-fluid table-responsive">
 		<table id="table" class="table table-striped table-hover footable footable-1 footable-filtering footable-filtering-left footable-paging footable-paging-center breakpoint-lg"></table>
 	</div>
 	<div id="paging-ui-container"></div>
 
-	<script src="./js/papaparse.min.js"></script>
+	<div class="container">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="#">BDDTrans Data</a>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar">
+					<p class="navbar-text">Créer avec ♥ par Julia</p>
+					<ul class="nav navbar-nav">
+						<li><a href="https://github.com/JuliaLblnd/bddtrans-data">GitHub</a></li>
+					</ul>
+					<p class="navbar-text navbar-right">Dernière mise à jour : <span id="update_date">27/05/2020 23:42</span></p>
+				</div>
+			</div>
+		</nav>
+	</div>
+	<script type="text/javascript">
+		let alert_box = document.getElementById("alert_box");
+		alert_box.textContent = "Chargement...";
+		alert_box.classList.remove("alert-danger");
+		alert_box.classList.add("alert-info");
+	</script>
 	<script src="./js/jquery-3.4.1.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/footable.min.js"></script>
