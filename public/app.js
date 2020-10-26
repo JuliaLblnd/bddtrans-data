@@ -2,44 +2,7 @@ jQuery(function($) {
 	var alert_box = $('#alert_box');
 	$.getJSON("bddtrans.json")
 		.done(function(data, textStatus, jqXHR) {
-			console.log(data);
 			$('#update_date').text(jqXHR.getResponseHeader("last-modified"));
-
-			$('#table').footable({
-				"columns": [
-					{"name": "categorie",   "title": "Categorie",   "filterable": false, "sortable": false, "visible": false},
-					{"name": "specialite",  "title": "Specialité",  "filterable": false, "sortable": false, "breakpoints": ""},
-					{"name": "nom",         "title": "Nom",         "filterable": true,  "sortable": true,  "breakpoints": ""},
-					{"name": "prenom",      "title": "Prénom",      "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
-					{"name": "adresse",     "title": "Adresse",     "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
-					{"name": "code postal", "title": "Code postal", "filterable": true,  "sortable": true,  "breakpoints": ""},
-					{"name": "ville",       "title": "Ville",       "filterable": true,  "sortable": true,  "breakpoints": ""},
-					{"name": "pays",        "title": "Pays",        "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
-					{"name": "description", "title": "Description", "filterable": true,  "sortable": true,  "breakpoints": "xs sm md"},
-					{"name": "lien",        "title": "Lien",        "filterable": false, "sortable": false, "breakpoints": "xs sm", 
-					    "formatter": function(value, options, rowData) {
-					        return "<a href=\"" + value + "\" target=\"_blank\">Voir sur BDDTrans</a>";
-					    },
-					}
-				],
-				"rows": data,
-				"paging" : {
-					"enabled": true,
-					"limit": 4,
-					"size": 50,
-					"container": "#paging-ui-container"
-				},
-				"filtering" : {
-					"enabled": true,
-					"container": "#filter-form-container"
-				},
-				"sorting" : {"enabled": true,},
-				"components": {
-					filtering: FooTable.SpecialityFiltering
-				}
-			});
-
-			alert_box.hide();
 
 			var unique = [];
 			var specialities = [];
@@ -54,7 +17,6 @@ jQuery(function($) {
 				}
 			}
 			specialities.sort();
-			console.log(specialities);
 
 			FooTable.SpecialityFiltering = FooTable.Filtering.extend({
 				construct: function(instance){
@@ -76,31 +38,65 @@ jQuery(function($) {
 						.appendTo($form_grp);
 
 					$.each(self.specialities, function(i, speciality){
-						self.$speciality.append($(new Option(speciality, '"'+speciality+'"')));
+						self.$speciality.append($(new Option(speciality, speciality)));
 					});
 				},
 				_onStatusDropdownChanged: function(e){
 					var self = e.data.self,
 						selected = $(this).val();
 					if (selected !== self.default){
-						self.addFilter('Tag', selected, ['Tag']);
-						//self.addFilter('Tag', '"' + selected + '"', ['Tag']);
+						self.addFilter('specialite', '"' + selected + '"', ['specialite']);
 					} else {
-						self.removeFilter('Tag');
+						self.removeFilter('specialite');
 					}
 					self.filter();
 				},
 				draw: function(){
 					this._super();
-					var tag = this.find('Tag');
-					if (tag instanceof FooTable.Filter){
-						this.$speciality.val(tag.query.val());
+					var speciality = this.find('speciality');
+					if (speciality instanceof FooTable.Filter){
+						this.$speciality.val(speciality.query.val());
 					} else {
 						this.$speciality.val(this.default);
 					}
 				}
 			});
 
+			$('#table').footable({
+				"columns": [
+					{"name": "categorie",   "title": "Categorie",   "filterable": false, "sortable": false, "visible": false},
+					{"name": "specialite",  "title": "Specialité",  "filterable": false, "sortable": false, "breakpoints": ""},
+					{"name": "nom",         "title": "Nom",         "filterable": true,  "sortable": true,  "breakpoints": ""},
+					{"name": "prenom",      "title": "Prénom",      "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
+					{"name": "adresse",     "title": "Adresse",     "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
+					{"name": "code postal", "title": "Code postal", "filterable": true,  "sortable": true,  "breakpoints": ""},
+					{"name": "ville",       "title": "Ville",       "filterable": true,  "sortable": true,  "breakpoints": ""},
+					{"name": "pays",        "title": "Pays",        "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
+					{"name": "description", "title": "Description", "filterable": true,  "sortable": true,  "breakpoints": "xs sm md"},
+					{"name": "lien",        "title": "Lien",        "filterable": false, "sortable": false, "breakpoints": "xs sm", 
+					    "formatter": function(value, options, rowData) {
+					        return "<a href=\"" + value + "\" target=\"_blank\">Voir sur BDDTrans</a>";
+					    },
+					}
+				],
+				"rows": data,
+				"paging" : {
+					"enabled": true,
+					"limit": 5,
+					"size": 50,
+					"container": "#paging-ui-container"
+				},
+				"filtering" : {
+					"enabled": true,
+					"container": "#filter-form-container"
+				},
+				"sorting" : {"enabled": true,},
+				"components": {
+					filtering: FooTable.SpecialityFiltering
+				}
+			});
+
+			alert_box.hide();
 		})
 		.fail(function( jqXHR, textStatus, errorThrown  ) {
 			alert_box.removeClass("alert-info");
