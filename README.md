@@ -14,8 +14,17 @@ git submodule update
 Requirements
 ------------
 
- - PHP 7.2
- - [JuliaLblnd/bddtrans-parser](https://github.com/JuliaLblnd/bddtrans-parser)
+ - ~PHP 7.2~ Just a webserver
+
+Credits
+-------
+
+Ce projet utilise les projets open-souce suivant :
+
+ - [bddtrans-parser](https://github.com/JuliaLblnd/bddtrans-parser)
+ - [jQuery](https://jquery.com/)
+ - [Bootstrap 3](https://getbootstrap.com/docs/3.4/)
+ - [Footable](https://github.com/fooplugins/FooTable)
 
 Authors
 -------
