@@ -29,7 +29,7 @@ jQuery(function($) {
 					this._super();
 					var self = this,
 						$form_grp = $('<div/>', {'class': 'form-group'})
-							.append($('<label/>', {'class': 'sr-only', text: 'Status'}))
+							.append($('<label/>', {'class': 'sr-only', text: 'Specialité'}))
 							.prependTo(self.$form);
 
 					self.$speciality = $('<select/>', { 'class': 'form-control' })
