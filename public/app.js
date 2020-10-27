@@ -6,10 +6,10 @@ jQuery(function($) {
 
 			var unique = [];
 			var specialities = [];
-			for (let i = 0; i < data.length; i++) {
-				let spe = data[i].specialite;
+			for (var i = 0; i < data.length; i++) {
+				var spe = data[i].specialite;
 				spe = spe.split(', ');
-				for (let j = 0; j < spe.length; j++) {
+				for (var j = 0; j < spe.length; j++) {
 					if (!unique[spe[j]]){
 						specialities.push(spe[j]);
 						unique[spe[j]] = 1;

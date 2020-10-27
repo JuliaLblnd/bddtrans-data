@@ -67,13 +67,13 @@
 			</div>
 		</nav>
 	</div>
-	<script type="text/javascript">
-		let alert_box = document.getElementById("alert_box");
-		alert_box.textContent = "Chargement...";
-		alert_box.classList.remove("alert-danger");
-		alert_box.classList.add("alert-info");
-	</script>
 	<script src="./js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		var alert_box = $('#alert_box');
+		alert_box.text("Chargement...");
+		alert_box.removeClass("alert-danger");
+		alert_box.addClass("alert-info");
+	</script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/footable.min.js"></script>
 	<script src="app.js"></script>
