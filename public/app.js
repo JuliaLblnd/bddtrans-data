@@ -64,7 +64,6 @@ jQuery(function($) {
 
 			$('#table').footable({
 				"columns": [
-					{"name": "categorie",   "title": "Categorie",   "filterable": false, "sortable": false, "visible": false},
 					{"name": "specialite",  "title": "Specialité",  "filterable": false, "sortable": false, "breakpoints": ""},
 					{"name": "nom",         "title": "Nom",         "filterable": true,  "sortable": true,  "breakpoints": ""},
 					{"name": "prenom",      "title": "Prénom",      "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
@@ -77,7 +76,9 @@ jQuery(function($) {
 					    "formatter": function(value, options, rowData) {
 					        return "<a href=\"" + value + "\" target=\"_blank\">Voir sur BDDTrans</a>";
 					    },
-					}
+					},
+					{"name": "categorie",   "title": "Categorie",   "filterable": false, "sortable": false, "visible": false},
+					{"name": "bddtrans_id", "title": "ID BDDTrans", "filterable": false, "sortable": false, "visible": false}
 				],
 				"rows": data,
 				"paging" : {
