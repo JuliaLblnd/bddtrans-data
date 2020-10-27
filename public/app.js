@@ -38,7 +38,7 @@ jQuery(function($) {
 						.appendTo($form_grp);
 
 					$.each(self.specialities, function(i, speciality){
-						self.$speciality.append($(new Option(speciality, speciality)));
+						self.$speciality.append(new Option(speciality, speciality));
 					});
 				},
 				_onStatusDropdownChanged: function(e){
