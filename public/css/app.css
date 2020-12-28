@@ -32,8 +32,7 @@ footer {
 	position: relative;
 }
 
-.footer .collapse,
-.footer .collapsing {
+.footer #footerContent {
 	position: absolute;
 	left: 0;
 	right: 0;

@@ -2,7 +2,7 @@ jQuery(function($) {
 	var alert_box = $('#alert_box');
 	$.getJSON("bddtrans.json")
 		.done(function(data, textStatus, jqXHR) {
-			$('#update_date').text(jqXHR.getResponseHeader("last-modified"));
+			$('#update_date, #update_date_2').text(jqXHR.getResponseHeader("last-modified"));
 
 			var unique = [];
 			var specialities = [];
@@ -63,36 +63,45 @@ jQuery(function($) {
 			});
 
 			$('#table').footable({
-				"columns": [
-					{"name": "specialite",  "title": "Specialité",  "filterable": false, "sortable": false, "breakpoints": ""},
-					{"name": "nom",         "title": "Nom",         "filterable": true,  "sortable": true,  "breakpoints": ""},
-					{"name": "prenom",      "title": "Prénom",      "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
-					{"name": "adresse",     "title": "Adresse",     "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
-					{"name": "code postal", "title": "Code postal", "filterable": true,  "sortable": true,  "breakpoints": ""},
-					{"name": "ville",       "title": "Ville",       "filterable": true,  "sortable": true,  "breakpoints": ""},
-					{"name": "pays",        "title": "Pays",        "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
-					{"name": "description", "title": "Description", "filterable": true,  "sortable": true,  "breakpoints": "xs sm md"},
-					{"name": "lien",        "title": "Lien",        "filterable": false, "sortable": false, "breakpoints": "xs sm", 
-					    "formatter": function(value, options, rowData) {
+				columns: [
+					{name: "specialite",  title: "Specialité",  filterable: false, sortable: false, breakpoints: ""},
+					{name: "nom",         title: "Nom",         filterable: true,  sortable: true,  breakpoints: ""},
+					{name: "prenom",      title: "Prénom",      filterable: true,  sortable: true,  breakpoints: "xs sm"},
+					{name: "adresse",     title: "Adresse",     filterable: true,  sortable: true,  breakpoints: "xs sm"},
+					{name: "code postal", title: "Code postal", filterable: true,  sortable: true,  breakpoints: ""},
+					{name: "ville",       title: "Ville",       filterable: true,  sortable: true,  breakpoints: ""},
+					{name: "pays",        title: "Pays",        filterable: true,  sortable: true,  breakpoints: "xs sm"},
+					{name: "description", title: "Description", filterable: true,  sortable: true,  breakpoints: "xs sm md"},
+					{name: "lien",        title: "Lien",        filterable: false, sortable: false, breakpoints: "xs sm", 
+					    formatter: function(value, options, rowData) {
 					        return "<a href=\"" + value + "\" target=\"_blank\">Voir sur BDDTrans</a>";
 					    },
 					},
-					{"name": "categorie",   "title": "Categorie",   "filterable": false, "sortable": false, "visible": false},
-					{"name": "bddtrans_id", "title": "ID BDDTrans", "filterable": false, "sortable": false, "visible": false}
+					{name: "categorie",   title: "Categorie",   filterable: false, sortable: false, visible: false},
+					{name: "bddtrans_id", title: "ID BDDTrans", filterable: false, sortable: false, visible: false}
 				],
-				"rows": data,
-				"paging" : {
-					"enabled": true,
-					"limit": 5,
-					"size": 50,
-					"container": "#paging-ui-container"
+				rows: data,
+				paging : {
+					enabled: true,
+					limit: 5,
+					size: 50,
+					container: "#paging-ui-container",
+					strings: {
+						first: 'First',
+						prev: 'Previous',
+						next: 'Next',
+						last: 'Last',
+						prevPages: '...',
+						nextPages: '...'
+					}
 				},
-				"filtering" : {
-					"enabled": true,
-					"container": "#filter-form-container"
+				filtering : {
+					enabled: true,
+					container: "#filter-form-container"
 				},
-				"sorting" : {"enabled": true,},
-				"components": {
+				sorting : {"enabled": true,},
+				state : {"enabled": true,},
+				components: {
 					filtering: FooTable.SpecialityFiltering
 				}
 			});

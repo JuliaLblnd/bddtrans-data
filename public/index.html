@@ -61,67 +61,65 @@
 		<table id="table" class="table table-striped table-hover footable footable-1 footable-filtering footable-filtering-left footable-paging footable-paging-center breakpoint-lg"></table>
 	</div>
 	<div id="paging-ui-container"></div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="#">BDDTrans Data</a>
-				</div>
-				<div class="collapse navbar-collapse" id="navbar">
-					<p class="navbar-text">Créer avec 💜 par <a href="https://twitter.com/JuliaLblnd" target="_blank">Julia</a></p>
-					<ul class="nav navbar-nav">
-						<li><a href="https://github.com/JuliaLblnd/bddtrans-data">GitHub</a></li>
-					</ul>
-					<p class="navbar-text navbar-right">Dernière mise à jour : <span id="update_date">27/05/2020 23:42</span></p>
-				</div>
-			</div>
-		</nav>
-	</div>
 </main>
 
 <footer class="footer mt-auto">
-	<div class="collapse bg-dark" id="footerInfos">
+	<div class="collapse bg-dark" id="footerContent">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-8 col-md-7 py-4">
-					<h4 class="text-white">About</h4>
-					<p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+					<h5 class="text-white">Créer avec 💜 par <a href="https://twitter.com/JuliaLblnd" target="_blank">Julia</a></h5>
+					<p class="text-muted">Dernière mise à jour : <span id="update_date_2">27/05/2020 23:42</span></p>
 				</div>
 				<div class="col-sm-4 offset-md-1 py-4">
 					<h4 class="text-white">Contact</h4>
 					<ul class="list-unstyled">
-						<li><a href="#" class="text-white">Follow on Twitter</a></li>
-						<li><a href="#" class="text-white">Like on Facebook</a></li>
-						<li><a href="#" class="text-white">Email me</a></li>
+						<li><a class="text-white" href="https://twitter.com/JuliaLblnd" target="_blank">Me suivre sur Twitter</a></li>
+						<li><a class="text-white" href="https://github.com/JuliaLblnd/bddtrans-data" target="_blank">Le projet sur GitHub</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="navbar navbar-dark bg-dark">
+	<div class="navbar navbar-expand-md navbar-dark bg-dark">
 		<div class="container">
-			<a href="#" class="navbar-brand" data-toggle="collapse" data-target="#footerInfos" aria-controls="footerInfos" aria-expanded="false" aria-label="Toggle navigation">
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+			<a href="#" class="navbar-brand" data-toggle="collapse" data-target="#footerContent" aria-controls="footerContent" aria-expanded="false" aria-label="Toggle navigation">
 				<strong>BDDTrans Data</strong>
 			</a>
-			<span class="navbar-text mr-auto">Créer avec 💜 par <a href="https://twitter.com/JuliaLblnd" target="_blank">Julia</a></span>
-			<span class="navbar-text">Dernière mise à jour : <span id="update_date">27/05/2020 23:42</span></span>
+			<button class="navbar-toggler mr-1" type="button" data-toggle="collapse" data-target="#footerContent" aria-controls="footerContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse">
+				<span class="navbar-text mr-auto">Créer avec 💜 par <a href="https://twitter.com/JuliaLblnd" target="_blank">Julia</a></span>
+				<span class="navbar-text">Dernière mise à jour : <span id="update_date">27/05/2020 23:42</span></span>
+			</div>
 		</div>
 	</div>
 </footer>
 
-	<script src="./js/jquery-3.4.1.min.js"></script>
+	<!-- <script src="./js/jquery.slim.min.js"></script> -->
+	<!-- <script src="./js/jquery-3.4.1.min.js"></script> -->
+	<!-- <script src="./js/ajax.js"></script> -->
+	<script src="./js/jquery.min.js"></script>
 	<script type="text/javascript">
 		var alert_box = $('#alert_box');
 		alert_box.text("Chargement...");
 		alert_box.removeClass("alert-danger");
 		alert_box.addClass("alert-info");
 	</script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/footable.min.js"></script>
+	<script src="./js/bootstrap.bundle.min.js"></script>
+	<!-- <script src="./js/footable.min.js"></script> -->
+	<script src="./js/footable.js"></script>
 	<script src="app.js"></script>
 </body>
 </html>
