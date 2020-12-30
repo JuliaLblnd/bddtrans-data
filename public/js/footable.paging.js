@@ -1,9 +1,10 @@
 /*
-* FooTable v3 - FooTable is a jQuery plugin that aims to make HTML tables on smaller devices look awesome.
-* @version 3.1.6
+* FooTable v4 - FooTable is a jQuery plugin that aims to make HTML tables on smaller devices look awesome.
+* @version 4.0.0
 * @link http://fooplugins.com
 * @copyright Steven Usher & Brad Vincent 2015
 * @license Released under the GPLv3 license.
+* @author Julia Leblond
 */
 (function($, F){
 
@@ -111,7 +112,7 @@
 			 * @type {string}
 			 */
 			this.container = table.o.paging.container;
-				/**
+			/**
 			 * The total number of pages.
 			 * @instance
 			 * @type {number}
@@ -142,12 +143,6 @@
 			 */
 			this.$container = null;
 			/**
-			 * The jQuery object of the element wrapping all the paging UI elements.
-			 * @instance
-			 * @type {jQuery}
-			 */
-			this.$wrapper = null;
-			/** +
 			 * The jQuery row object that contains all the paging specific elements.
 			 * @instance
 			 * @type {jQuery}
@@ -374,8 +369,6 @@
 			} else {
 				this.$container.addClass('footable-paging-external').addClass(position);
 			}
-			// this.$pagination = $('<ul/>', { 'class': 'pagination' }).on('click.footable', 'a.'+self.classes.li+'-link', { self: this }, this._onPageClicked);
-			// this.$pagination = $('<ul/>', { 'class': self.classes.ul }).on('click.footable', 'a.'+self.classes.a, { self: this }, this._onPageClicked);
 			this.$pagination = $('<ul/>', { 'class': self.classes.ul }).on('click.footable', 'a.'+self.classes.a, { self: this }, this._onPageClicked);
 			this.$count = $('<span/>', { 'class': 'label label-default' });
 			this.$container.append(this.$pagination, $('<div/>', {'class': 'divider'}), this.$count);
@@ -570,7 +563,6 @@
 			}
 			for (var i = 0, $li; i < self.total; i++){
 				$li = link(i + 1, i + 1, false);
-				// $li = link(i + 1, i + 1, ''+self.classes.li);
 				self.$pagination.append($li);
 			}
 			if (multiple){
@@ -626,38 +618,6 @@
 			}
 		},
 		/**
-		 * Sets the visible page using the supplied parameters.
-		 * @instance
-		 * @private
-		 * @param {number} page - The page to make visible.
-		 * @param {boolean} right - If set to true the supplied page will be the right most visible pagination link.
-		 */
-		_setVisibility: function(page, right){
-			if (this.limit > 0 && this.total > this.limit){
-				if (!this.$pagination.children('li.'+this.classes.li+'[data-page="'+page+'"]').hasClass('visible')){
-					var start = 0, end = 0;
-					if (right == true){
-						end = page > this.total ? this.total : page;
-						start = end - this.limit;
-					} else {
-						start = page < 1 ? 0 : page - 1;
-						end = start + this.limit;
-					}
-					if (start < 0){
-						start = 0;
-						end = this.limit > this.total ? this.total : this.limit;
-					}
-					if (end > this.total){
-						end = this.total;
-						start = this.total - this.limit < 0 ? 0 : this.total - this.limit;
-					}
-					this.$pagination.children('li.'+this.classes.li).removeClass('visible').slice(start, end).addClass('visible');
-				}
-			} else {
-				this.$pagination.children('li.'+this.classes.li).removeClass('visible').slice(0, this.total).addClass('visible');
-			}
-		},
-		/**
 		 * Sets the visibility of pages using the supplied parameters.
 		 * @instance
 		 * @private
@@ -683,20 +643,7 @@
 					end = this.total;
 					start = this.total - this.limit < 0 ? 0 : this.total - this.limit;
 				}
-				console.log('page: '+page)
-				console.log('right: '+right)
-				console.log('start: '+start)
-				console.log('end: '+end)
-				// this.$pagination.children('li.'+this.classes.li).addClass('d-none').slice(start, end).removeClass('d-none');
-				// this.$pagination.children('li.'+this.classes.li).slice(start, end).addClass('d-none');
 				this.$pagination.children('li[data-page]').addClass('d-none').slice(start, end).removeClass('d-none');
-
-				// this.$pagination.children().filter(function() {
-				// 	var dataPage = this.attributes['data-page'].value;
-				// 	if (!dataPage.match(/\d+/)) {return false}
-				// 	dataPage = parseInt(dataPage)
-				// 	return dataPage < start || dataPage > end;
-				// }).addClass('d-none');
 			}
 		},
 		/**
@@ -750,6 +697,9 @@
 	 * @prop {string} strings.last="&raquo;" - The string used for the 'last' button.
 	 * @prop {string} strings.prevPages="..." - The string used for the 'previous X pages' button.
 	 * @prop {string} strings.nextPages="..." - The string used for the 'next X pages' button.
+	 * @prop {string} classes.ul="pagination" - The class added to the <ul> pagination wrapper.
+	 * @prop {string} classes.li="page-item" - The class added to the <li> pagination elements.
+	 * @prop {string} classes.a="page-link" - The class added to the pagination links.
 	 */
 	F.Defaults.prototype.paging = {
 		enabled: false,
