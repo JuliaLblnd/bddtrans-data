@@ -2,6 +2,15 @@
 	.table-responsive {
 		border: none;
 	}
+	.table-responsive > .table > tbody > tr > td, 
+	.table-responsive > .table > tbody > tr > th, 
+	.table-responsive > .table > tfoot > tr > td, 
+	.table-responsive > .table > tfoot > tr > th, 
+	.table-responsive > .table > thead > tr > td, 
+	.table-responsive > .table > thead > tr > th {
+	    white-space: nowrap;
+	}
+
 	table.footable-details {
 		white-space: initial;
 	}
@@ -30,6 +39,7 @@ footer {
 
 .footer {
 	position: relative;
+	z-index: 100;
 }
 
 .footer #footerContent {

@@ -93,6 +93,11 @@ jQuery(function($) {
 						last: 'Last',
 						prevPages: '...',
 						nextPages: '...'
+					},
+					classes: {
+						ul: 'pagination justify-content-center',
+						li: 'page-item',
+						a: 'page-link'
 					}
 				},
 				filtering : {
