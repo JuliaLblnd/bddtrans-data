@@ -62,7 +62,8 @@ jQuery(function($) {
 					var self = e.data.self,
 						selected = $(this).val();
 					if (selected !== self.default){
-						self.addFilter('specialite', '"' + selected + '"', ['specialite']);
+						self.addFilter('specialite', selected, ['specialite'], false, false);
+						// self.addFilter('specialite', '"' + selected + '"', ['specialite']);
 					} else {
 						self.removeFilter('specialite');
 					}
@@ -70,7 +71,7 @@ jQuery(function($) {
 				},
 				draw: function(){
 					this._super();
-					var speciality = this.find('speciality');
+					var speciality = this.find('specialite');
 					if (speciality instanceof FooTable.Filter){
 						this.$speciality.val(speciality.query.val());
 					} else {
@@ -94,13 +95,15 @@ jQuery(function($) {
 				"rows": data,
 				"paging" : {
 					"enabled": true,
+					"container": "#paging-ui-container",
 					"limit": 5,
-					"size": 50,
-					"container": "#paging-ui-container"
+					"size": 50
 				},
 				"filtering" : {
 					"enabled": true,
-					"container": "#filter-form-container"
+					"container": "#filter-form-container",
+					"connectors": false,
+					"min": 3
 				},
 				"sorting" : {"enabled": true,},
 				"components": {
