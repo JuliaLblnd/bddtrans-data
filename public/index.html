@@ -84,7 +84,6 @@
 				</div>
 				<div class="modal-body" style="height: calc(100vh - 120px); overflow-y: auto;">
 					<!-- Comments -->
-					<p>Ca arrive bientôt ;)</p>
 				</div>
 			</div>
 		</div>
@@ -100,5 +99,21 @@
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/footable.min.js"></script>
 	<script src="app.js"></script>
+	<script type="text/javascript">
+		$('#commentsModal').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget);
+			var categorie = button.data('categorie');
+			var bddtrans_id = button.data('bddtrans_id');
+			var url = '/getComments.php'
+				+ '?categorie=' + categorie
+				+ '&bddtrans_id=' + bddtrans_id
+				+ '&format=html'
+			$(this).find('.modal-body').load(url);
+		})
+		$('#commentsModal').on('hidden.bs.modal', function (event) {
+			var modal = $(this)
+			$(this).find('.modal-body').text("");
+		})
+	</script>
 </body>
 </html>
