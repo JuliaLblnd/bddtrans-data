@@ -12,8 +12,8 @@ jQuery(function($) {
 				data[i].actions = '<a class="btn btn-default btn-sm" href="'+link+'" target="_blank"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Ouvrir sur BDDTrans</a>';
 				if (comments > 0) {
 					var categorie = data[i].categorie;
-					var bddtrans_id = data[i].bddtrans_id;
-					data[i].actions += '<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#commentsModal" data-categorie="'+categorie+'" data-bddtrans_id="'+bddtrans_id+'">Voir les commentaires ('+comments+')</button>';
+					var slug = data[i].slug;
+					data[i].actions += '<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#commentsModal" data-categorie="'+categorie+'" data-slug="'+slug+'">Voir les commentaires ('+comments+')</button>';
 				}
 				else {
 					data[i].actions += '<button type="button" class="btn btn-default btn-sm" disabled="disabled">Aucun commentaires</button>';
@@ -21,7 +21,7 @@ jQuery(function($) {
 
 				delete data[i].lien;
 				delete data[i].categorie;
-				delete data[i].bddtrans_id;
+				delete data[i].slug;
 				delete data[i].commentaires;
 
 				var spe = data[i].specialite;

@@ -103,10 +103,10 @@
 		$('#commentsModal').on('show.bs.modal', function (event) {
 			var button = $(event.relatedTarget);
 			var categorie = button.data('categorie');
-			var bddtrans_id = button.data('bddtrans_id');
+			var slug = button.data('slug');
 			var url = '/getComments.php'
 				+ '?categorie=' + categorie
-				+ '&bddtrans_id=' + bddtrans_id
+				+ '&slug=' + slug
 				+ '&format=html'
 			$(this).find('.modal-body').load(url);
 		})
