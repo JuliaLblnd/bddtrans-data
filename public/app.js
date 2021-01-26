@@ -2,7 +2,8 @@ jQuery(function($) {
 	var alert_box = $('#alert_box');
 	$.getJSON("bddtrans.json")
 		.done(function(data, textStatus, jqXHR) {
-			$('#update_date').text(jqXHR.getResponseHeader("last-modified"));
+			var updateDate = new Date(jqXHR.getResponseHeader("last-modified"));
+			$('#update_date').text(updateDate.toLocaleString());
 
 			var unique = [];
 			var specialities = [];
@@ -89,7 +90,7 @@ jQuery(function($) {
 					{"name": "code postal", "title": "Code postal", "filterable": true,  "sortable": true,  "breakpoints": ""},
 					{"name": "ville",       "title": "Ville",       "filterable": true,  "sortable": true,  "breakpoints": ""},
 					{"name": "pays",        "title": "Pays",        "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
-					{"name": "description", "title": "Description", "filterable": true,  "sortable": true,  "breakpoints": "xs sm md"},
+					{"name": "description", "title": "Description", "filterable": true,  "sortable": true,  "breakpoints": "xs sm md lg"},
 					{"name": "actions",     "title": "Actions",     "filterable": false, "sortable": false, "breakpoints": "xs sm"}
 				],
 				"rows": data,
