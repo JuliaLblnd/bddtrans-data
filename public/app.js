@@ -91,7 +91,7 @@ jQuery(function($) {
 					{"name": "ville",       "title": "Ville",       "filterable": true,  "sortable": true,  "breakpoints": ""},
 					{"name": "pays",        "title": "Pays",        "filterable": true,  "sortable": true,  "breakpoints": "xs sm"},
 					{"name": "description", "title": "Description", "filterable": true,  "sortable": true,  "breakpoints": "xs sm md lg"},
-					{"name": "actions",     "title": "Actions",     "filterable": false, "sortable": false, "breakpoints": "xs sm"}
+					{"name": "actions",     "title": "Actions",     "filterable": false, "sortable": false, "breakpoints": "xs sm", "style": {"white-space": "nowrap"}}
 				],
 				"rows": data,
 				"paging" : {
