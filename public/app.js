@@ -80,6 +80,9 @@ jQuery(function($) {
 					}
 				}
 			});
+			FooTable.NewFiltering = FooTable.Filtering.extend({
+
+			});
 
 			$('#table').footable({
 				"columns": [
@@ -104,15 +107,27 @@ jQuery(function($) {
 					"enabled": true,
 					"container": "#filter-form-container",
 					"connectors": false,
-					"min": 3
+					"min": 2,
+					"delay": -1
 				},
 				"sorting" : {"enabled": true,},
 				"components": {
-					filtering: FooTable.SpecialityFiltering
+					"filtering": FooTable.NewFiltering,
+					"filtering": FooTable.SpecialityFiltering
+				},
+				"on": {
+					"ready.ft.table": function(e, ft) {
+						alert_box.hide();
+						$('#filter-form-container > form').submit(function(event) {
+							//alert( "Handler for .submit() called." );
+							//console.log($(this).find(".btn-primary"))
+							//console.log(ft)
+							event.preventDefault();
+							$(this).find(".btn-primary").click()
+						});
+					}
 				}
 			});
-
-			alert_box.hide();
 		})
 		.fail(function( jqXHR, textStatus, errorThrown  ) {
 			alert_box.removeClass("alert-info");
