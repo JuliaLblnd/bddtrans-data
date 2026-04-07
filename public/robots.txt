@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /bddtrans.csv
+Disallow: /bddtrans.json
+Disallow: /getComments.php
