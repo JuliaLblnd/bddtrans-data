@@ -26,3 +26,7 @@ table.footable-details > tbody > tr > td:nth-child(2) {
 td .btn {
 	margin: 2px;
 }
+
+#navbar_footer .navbar-text {
+	margin-left: 10px;
+}
